@@ -1,9 +1,8 @@
 import cors from "cors";
 import dotenv from "dotenv";
 import express, { Express, Request, Response } from "express";
-import "./database/config/database";
-import userRouter from "./routers/userRouter";
-import blogRouter from "./routers/blogRouter";
+import router from "./routers";
+
 
 dotenv.config();
 const app = express();
@@ -17,8 +16,8 @@ app.use(cors());
 app.get("/", (req: Request, res: Response) => {
   res.send("Welcome to My Brand App Apis...");
 });
-app.use("/api/v1/brand/user", userRouter);
-app.use("/api/v1/brand/blog", blogRouter);
+app.use("/", router);
+
 
 let server: any;
 
