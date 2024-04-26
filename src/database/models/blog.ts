@@ -1,34 +1,33 @@
-import mongoose, { Document } from "mongoose";
+import mongoose, { Document, Schema } from "mongoose";
 
 interface Blog extends Document {
   name: string;
   description: string;
-  pic: String;
-  timestamp: Date;
+
+  images: string[];
+  createdAt: Date;
+  updatedAt: Date;
 }
 
-const blogSchema = new mongoose.Schema(
-  {
-    name: {
-      type: String,
-      required: true,
-      minlength: 3,
-      maxlength: 200,
-      unique: true,
-    },
-    description: {
-      type: String,
-      required: true,
-    },
-    pic: {
-      type: String,
-      required: true,
-    },
+const blogSchema: Schema = new Schema({
+  name: {
+    type: String,
+    required: true,
   },
-  {
-    timestamps: true,
-  }
-);
+  description: {
+    type: String,
+    required: true,
+  },
+  images: [String],
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now,
+  },
+});
 
 const blogModel = mongoose.model<Blog>("Blog", blogSchema);
 
