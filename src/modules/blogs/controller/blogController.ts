@@ -110,8 +110,34 @@ const getBlogByIdController = async (req: Request, res: Response) => {
 const updateBlogByIdController = async (req: Request, res: Response) => {
   try {
     const id: string = req.params.id;
-    const { name, description, pic } = req.body;
-    const updatedBlog = await updateBlogById(id, { name, description, pic });
+    const { name, description } = req.body;
+    const uploadedImages = req.files?.images;
+    if (!name || !description) {
+      res
+        .status(400)
+        .json({ error: "name and description are required fields" });
+      return;
+    }
+
+    let imageUrls: string[] = [];
+    if (uploadedImages && Array.isArray(uploadedImages)) {
+      imageUrls = await uploadImagesToCloudinary(uploadedImages);
+    } else if (uploadedImages && uploadedImages.tempFilePath) {
+      const result = await cloudinary.uploader.upload(
+        uploadedImages.tempFilePath
+      );
+      imageUrls = [result.secure_url];
+    }
+
+    const updateData: Partial<Blog> = {
+      name,
+      description,
+      images: imageUrls,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    };
+
+    const updatedBlog = await updateBlogById(id, updateData);
     if (!updatedBlog) {
       res.json({ status: false, message: "Blog not found" });
       return;

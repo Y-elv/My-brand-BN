@@ -13,6 +13,6 @@ const blogRouter = express.Router();
 blogRouter.post("/createBlog", verifyToken, createBlogController);
 blogRouter.get("/getAllBlog", getAllBlogsController);
 blogRouter.delete("/deleteBlog/:id", verifyToken, deleteBlogByIdController);
-blogRouter.put("/updateBlog/:id", verifyToken, updateBlogByIdController);
+blogRouter.patch("/updateBlog/:id", verifyToken, updateBlogByIdController);
 blogRouter.get("/getBlog/:id", verifyToken, getBlogByIdController);
 export default blogRouter;

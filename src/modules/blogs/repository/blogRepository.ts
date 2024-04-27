@@ -13,7 +13,7 @@ const getBlogById = async (id: string) => {
 };
 
 const updateBlogById = async (id: string, data: any) => {
-  return await Blog.findByIdAndUpdate(id, data, { new: true });
+  return await Blog.findByIdAndUpdate(id, data);
 };
 
 const deleteBlogById = async (id: string) => {
