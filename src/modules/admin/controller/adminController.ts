@@ -11,7 +11,9 @@ const loginAdmin = async (req: Request, res: Response) => {
   const user = await findUserByEmail(email);
 
   if (!user) {
-    return res.status(401).json({ status: false, message: "Admin not found" });
+    return res
+      .status(401)
+      .json({ status: false, message: "Invalid Credentials" });
   }
 
   const passwordMatches = await comparePassword(password, user.password);
