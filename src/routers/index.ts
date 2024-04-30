@@ -12,10 +12,10 @@ const router = express.Router();
 
 router.use(`/api-docs`, swaggerUi.serve, swaggerUi.setup(swaggerOptions));
 
-router.use(`/${url}/api/v1/blog`, blogRouter);
-router.use(`/${url}/api/v1"`, adminRoutes);
-router.use(`/${url}/api/v1`, contactRoutes);
-router.use(`/${url}/api/v1/comment`, commentRouter);
+router.use(`/${url}/blog`, blogRouter);
+router.use(`/${url}/`, adminRoutes);
+router.use(`/${url}/`, contactRoutes);
+router.use(`/${url}/comment`, commentRouter);
 
 router.all(`/`, (req, res) => {
   res.send("welcome to Medestudo Apis");
