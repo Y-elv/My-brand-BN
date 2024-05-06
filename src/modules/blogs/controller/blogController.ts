@@ -7,7 +7,7 @@ import {
   deleteBlogById,
 } from "../repository/blogRepository";
 import blogModel, { Blog } from "../../../database/models/blog";
-// import uploadImagesToCloudinary from "../../../utils/claudinary";
+
 
 const uploadImagesToCloudinary = async (images: any[]): Promise<string[]> => {
   try {
@@ -40,7 +40,7 @@ const createBlogController = async (req: any, res: Response): Promise<void> => {
     const { name, description } = req.body;
     const uploadedImages = req.files?.images;
     console.log(req);
-    // console.log(uploadedImages);
+   
 
     if (!name || !description) {
       res

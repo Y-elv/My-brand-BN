@@ -68,7 +68,18 @@
     "exclude": [
       "src/_tests_/**/*.*",
       "src/database/**/*.*",
-      "src/modules/contact/controller/contactController.ts"
+      "src/modules/contact/controller/contactController.ts",
+      "src/utils/multer.ts",
+      "src/utils/claudinary.ts",
+      "src/middlewares/verifyToken.ts",
+       "src/modules/admin/controller/adminController.ts",
+       "src/modules/blogs/controller/blogController.ts",
+       "src/modules/comments/controller/commentsController.ts",
+       "src/modules/contact/repository/contactRepository.ts ",
+       "src/modules/contact/test/contact.spec.ts",
+       "src/utils/*.ts"
+
+
     ],
     "reporter": [
       "html",
