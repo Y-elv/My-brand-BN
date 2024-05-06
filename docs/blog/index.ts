@@ -15,28 +15,27 @@ const blog = {
             properties: {
               name: {
                 type: "string",
-                description: "Name of a blog",
+                description: "Name of the blog",
               },
               description: {
                 type: "string",
                 description: "Description of the blog",
+              },
+              image: {
+                type: "string",
+                description: "URL of the image for the blog post",
               },
             },
             required: ["name", "description"],
           },
           required: true,
         },
-        {
-          in: "formData",
-          name: "image",
-          type: "file",
-          required: true,
-          description: "Image file to upload for the blog",
-        },
       ],
-      consumes: ["multipart/form-data"],
+      consumes: ["application/json"],
       produces: ["application/json"],
-      responses,
+      responses: {
+        // Define your responses here
+      },
       security: [
         {
           JWT: [],
@@ -44,6 +43,7 @@ const blog = {
       ],
     },
   },
+
   "/blog/getAllBlog": {
     get: {
       tags: ["Blogs"],
@@ -86,7 +86,7 @@ const blog = {
     patch: {
       tags: ["Blogs"],
       summary: "Update Blog",
-      description: "Update Blog ",
+      description: "Update an existing blog post.",
       parameters: [
         {
           in: "path",
@@ -94,8 +94,8 @@ const blog = {
           required: true,
           schema: {
             type: "string",
+            description: "The ID of the blog post to update.",
           },
-          description: "The ID of the Comment to be retrieved ",
         },
         {
           in: "body",
@@ -105,29 +105,27 @@ const blog = {
             properties: {
               name: {
                 type: "string",
-                description: "Name of a blog",
+                description: "Name of the blog",
               },
               description: {
                 type: "string",
                 description: "Description of the blog",
+              },
+              image: {
+                type: "string",
+                description: "URL of the image for the blog post",
               },
             },
             required: ["name", "description"],
           },
           required: true,
         },
-        {
-          in: "formData",
-          name: "image",
-          type: "file",
-          required: true,
-          description: "Image file to upload for the blog",
-        },
       ],
-
-      consumes: ["multipart/form-data"],
+      consumes: ["application/json"],
       produces: ["application/json"],
-      responses,
+      responses: {
+        // Define your responses here
+      },
       security: [
         {
           JWT: [],

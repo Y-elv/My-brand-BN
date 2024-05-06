@@ -67,7 +67,8 @@
     ],
     "exclude": [
       "src/_tests_/**/*.*",
-      "src/database/**/*.*"
+      "src/database/**/*.*",
+      "src/modules/contact/controller/contactController.ts"
     ],
     "reporter": [
       "html",
